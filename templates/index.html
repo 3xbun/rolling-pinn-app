@@ -15,11 +15,10 @@
     <h1 class="title">Step 1: Sent Menu / Ask for order(s)</h1>
     <hr>
     <ul class="phase">
-        <li>Something text</li>
-        <li>Something text</li>
-        <li>Something text</li>
-        <li>Something text</li>
-        <li>Something text</li>
+        {% for i in range(greeting|length) %}
+            <li id="grt-{{i}}">{{greeting[i]}}</li>
+            <button class="copy" onclick="copyToClipboard('grt-{{i}}')">คัดลอก</button>
+        {% endfor %}
     </ul>
 </section>
 
@@ -54,13 +53,15 @@ Please let us know what you would like and provide the following delivery info k
 </section>
 
 <section id="step3">
-    <h1 class="title">Get Delivery fee from <a href="https://web.lalamove.com/" target="_blank">Lalamove</a> </h1>
-    <hr>
+    <h1 class="title">Step3: Get Delivery fee from <a class="button" href="https://l.facebook.com/l.php?u=https%3A%2F%2Flalamove.app.link%2Fbkk_delivernow_th%3F__hssc%3D85099782.1.1589832350591%26__hstc%3D85099782.e833149cc57875bca57de25bdb687398.1589817436949.1589817436949.1589832350591.2%26hsCtaTracking%3D86f81edc-a11c-4a26-87ef-8c0cbd6b6224%257C6e18cfc3-1e82-4484-8467-2ba5ce3cc431%26fbclid%3DIwAR0C9QHpkEwKjS642CPHnKCOIgDNkdR2z12TAKqYYqGG0Pas4KHNcL5_pgs&h=AT025D1EAVXmVJGhBS02pfvGyY9bCUFuZ6qe7v8Imop5-RHDAzeBnfKxDrfFiFkke5Ao39QykiWKmFnclNwpGHewedayZL49_FpUkrnjvMinsUPtWKsLFVRJLggpjg" target="_blank">Lalamove</a> </h1>
+    <hr> <br>
+    <p id="house">Biohouse, 55 Soi Sukhumvit 39, Khlong Tan Nuea, Watthana, Bangkok 10110</p>
+    <button class="copy" onclick="copyToClipboard('house')">คัดลอก</button> <br> <br>
     <input type="text" placeholder="delivery fee" id="delivery_fee">
 </section>
 
 <section id="step4">
-    <h1 class="title">Orders</h1>
+    <h1 class="title">Step4: Orders</h1>
     <hr>
     <div class="order">
         <div class="container">
@@ -96,8 +97,12 @@ Please let us know what you would like and provide the following delivery info k
             <input type="text" inputmode="numeric" pattern="[0-9]*" id="tc" class="ci item"> Trible C <br>
             <input type="text" inputmode="numeric" pattern="[0-9]*" id="sexy" class="ci item"> Sexy Back <br>
             <input type="text" inputmode="numeric" pattern="[0-9]*" id="mp" class="ci item"> Matcha Powwow <br>
+            <br>
             <!-- Cookie Cake -->
             <h2 class="categories">Cookie Cake</h2>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" id="dccc" class="cc item"> Death by Chocolate<br>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" id="cupcc" class="cc item"> Cup C<br>
+
             
         </div>
         <br>
@@ -109,6 +114,18 @@ Please let us know what you would like and provide the following delivery info k
         <button class="copy" onclick="copyToClipboard('result')">คัดลอก</button>
     </div>
     
+</section>
+
+<section id="step5">
+    <h1 class="title">Step5: Thank you</h1>
+    <hr>
+    <ul class="phase">
+        {% for i in range(thankyou|length) %}
+            <li id="ty-{{i}}">{{thankyou[i]}}</li>
+            <button class="copy" onclick="copyToClipboard('ty-{{i}}')">คัดลอก</button>
+        {% endfor %}
+    </ul>
+
 </section>
 </div>
 
@@ -133,7 +150,9 @@ const listItems = {
     "cm": "Conflake Mashmallow",
     "tc": "Trible C",
     "sexy": "Sexy Back",
-    "mp": "Matcha Powwow"
+    "mp": "Matcha Powwow",
+    "dccc": "Death by Chocolate",
+    "cupcc": "Cup C"
 }
 
 function copyToClipboard(containerid) {
@@ -182,11 +201,12 @@ function getResult() {
         }
     }
 
-    let ind = []
-    let cake = []
-    let bb = []
-    let bc = []
-    let ci = []
+    let ind = [];
+    let cake = [];
+    let bb = [];
+    let bc = [];
+    let ci = [];
+    let cc = [];
 
     for (order of orders) {
         if (order.classList[0] == "ind") {
@@ -200,6 +220,8 @@ function getResult() {
             bc.push(order);
         } else if (order.classList[0] == "ci") {
             ci.push(order);
+        } else if (order.classList[0] == 'cc') {
+            cc.push(order);
         }
     }
 
@@ -207,8 +229,6 @@ function getResult() {
     if (cake.length > 0) {
         result += `${cake.length} Cakedashians ${calculator(cake, 'cake')}\n${counter(cake, true)}\n`;
     }
-
-
 
     // Brownie Bites
     if (bb.length > 0) {
@@ -237,6 +257,16 @@ function getResult() {
         result += `${amt} Chocolate Invasion ${calculator(ci, 'ci')}\n${counter(ci)}\n`;
     }
 
+    // Cookie Cake
+    if (cc.length > 0) {
+        amt = 0;
+        for (order of cc) {
+            amt += Number(order.value);
+        }
+        result += `${amt} Cookie Cake ${calculator(cc, 'cc')}\n${counter(cc, true)}\n`;
+    }
+
+    // Grand Total
     result += `\nTotal ${Number(delivery) + calculator(ind, 'ind') + calculator(cake, 'cake') + calculator(bb, 'bb') + calculator(bc, 'bc') + calculator(ci, 'ci')}`
 
     showResult.innerHTML = result;
@@ -315,6 +345,14 @@ function calculator(orders, name) {
             } else {
                 total = "error"
                 break;
+            }
+        }
+    } else if (name == 'cc') {
+        for (order of orders) {
+            if (order.value == "1") {
+                total += 700;
+            } else if (order.value == "2") {
+                total += 1000;
             }
         }
     }

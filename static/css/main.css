@@ -67,10 +67,17 @@ input, textarea {
     width: 100%;
 }
 
+#step3
+
 .phase li {
     margin-left: 1em;
-    font-size: 1.5em;
+    font-size: 1em;
     list-style: none;
+}
+
+.phase .copy {
+    margin-left: 1em;
+    margin-bottom: 1em;
 }
 
 hr {
@@ -98,7 +105,6 @@ button {
 
 a {
     text-decoration: none;
-    color: rgb(241, 102, 34);
 }
 
 .order input {
@@ -110,4 +116,15 @@ a {
 
 .submit {
     font-size: 2em;
+}
+
+li {
+    list-style: none;
+}
+
+a.button {
+    color: #fff;
+    background-color: rgb(241, 102, 34);
+    padding: 0 .3em;
+    border-radius: .3em;
 }
