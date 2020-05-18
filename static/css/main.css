@@ -93,3 +93,13 @@ a {
     text-decoration: none;
     color: rgb(241, 102, 34);
 }
+
+.order input {
+    width: 4em;
+    text-align: center;
+    display: inline;
+}
+
+.submit {
+    font-size: 2em;
+}
