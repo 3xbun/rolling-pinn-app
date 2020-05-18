@@ -2,6 +2,83 @@
 
 {% block content %}
 
-Tester
+<br>
 
+<section id="username">
+    <input type="text">
+</section>
+
+<section id="step1">
+    <h1 class="title">Step 1: Sent Menu / Ask for order(s)</h1>
+    <hr>
+    <ul class="phase">
+        <li>Something text</li>
+        <li>Something text</li>
+        <li>Something text</li>
+        <li>Something text</li>
+        <li>Something text</li>
+    </ul>
+</section>
+
+<section id="step2">
+    <h1 class="title">Step 2: Ask for information</h1>
+    <hr>
+    <pre id="inf-eng">
+Please let us know what you would like and provide the following delivery info ka.
+    1. Your name.
+    2. Your phone number.
+    3. Delivery place. (Please share your location on line or google map for accuracy)
+    4. Date/Time to receiving.</pre> <br>
+    <button class="copy" onclick="copyToClipboard('inf-eng')">คัดลอก</button>
+
+    <pre id="inf-th">
+ขอทราบ 
+ชื่อ
+ที่อยู่ 
+เบอร์โทรศัพท์ 
+วัน เวลา รับของ ค่าคุณลูกค้า</pre> <br>
+    <button class="copy" onclick="copyToClipboard('inf-th')">คัดลอก</button>
+
+    <hr>
+    
+    <h1 class="title">Information</h1>
+    <div class="information">
+        Name: <input type="text" placeholder="name">
+        Phone No.: <input type="text" placeholder="phone no.">
+        Address: <textarea rows="4" placeholder="address"></textarea>
+        Date/Time: <input type="text" placeholder="date">
+    </div>
+</section>
+
+<section id="step3">
+    <h1 class="title">Get Delivery fee from <a href="https://web.lalamove.com/" target="_blank">Lalamove</a> </h1>
+    <hr>
+    <input type="text" placeholder="delivery fee">
+</section>
+
+<script>
+function copyToClipboard(containerid) {
+    if (window.getSelection) {
+        if (window.getSelection().empty) { // Chrome
+            window.getSelection().empty();
+        } else if (window.getSelection().removeAllRanges) { // Firefox
+            window.getSelection().removeAllRanges();
+        }
+    } else if (document.selection) { // IE?
+        document.selection.empty();
+    }
+
+    if (document.selection) {
+        var range = document.body.createTextRange();
+        range.moveToElementText(document.getElementById(containerid));
+        range.select().createTextRange();
+        document.execCommand("copy");
+    } else if (window.getSelection) {
+        var range = document.createRange();
+        range.selectNode(document.getElementById(containerid));
+        window.getSelection().addRange(range);
+        document.execCommand("copy");
+    }
+}
+</script>
 {% endblock %}
