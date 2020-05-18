@@ -64,39 +64,48 @@ Please let us know what you would like and provide the following delivery info k
     <hr>
     <div class="order">
         <div class="container">
-            <input type="number" pattern="/d*" id="dcc" class="ind item"> Death by Chocolate Pudding Cake <br> 
-            
+            <input type="text" inputmode="numeric" pattern="[0-9]*" id="dcc" class="ind item"> Death by Chocolate Pudding Cake <br> 
+            <br>
             <!-- Cakedashians -->
-            <input type="number" pattern="/d*" id="cp" class="cake item"> Chocolate Pudding <br>
-            <input type="number" pattern="/d*" id="bc" class="cake item"> Basque Cheesecake <br>
-            <input type="number" pattern="/d*" id="cc" class="cake item"> Carrot Cream Cheese <br>
-            <input type="number" pattern="/d*" id="bn" class="cake item"> Banana Nutelle <br>
-
+            <h2 class="categories">Cakedashians</h2>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" id="cp" class="cake item"> Chocolate Pudding <br>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" id="bc" class="cake item"> Basque Cheesecake <br>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" id="cc" class="cake item"> Carrot Cream Cheese <br>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" id="bn" class="cake item"> Banana Nutelle <br>
+            <br>
             <!-- Brownie Bites -->
-            <input type="number" pattern="/d*" id="bae" class="bb item"> Bae <br>
-            <input type="number" pattern="/d*" id="rv" class="bb item"> Red Velvet <br>
-            <input type="number" pattern="/d*" id="fud" class="bb item"> Fudge <br>
-
+            <h2 class="categories">Brownie Bites</h2>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" id="bae" class="bb item"> Bae <br>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" id="rv" class="bb item"> Red Velvet <br>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" id="fud" class="bb item"> Fudge <br>
+            <br>
             <!-- The Big C's -->
-            <input type="number" pattern="/d*" id="hn" class="bc item"> Hella Nutella <br>
-            <input type="number" pattern="/d*" id="cup" class="bc item"> Cup C<br>
-            <input type="number" pattern="/d*" id="dc" class="bc item"> Death by Chocolate XL<br>
-            <input type="number" pattern="/d*" id="rvc" class="bc item"> Red Velvet Cream Cheese<br>
-            <input type="number" pattern="/d*" id="oro" class="bc item"> Oreo <br>
-
+            <h2 class="categories">The Big C's</h2>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" id="hn" class="bc item"> Hella Nutella <br>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" id="cup" class="bc item"> Cup C<br>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" id="dc" class="bc item"> Death by Chocolate XL<br>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" id="rvc" class="bc item"> Red Velvet Cream Cheese<br>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" id="oro" class="bc item"> Oreo <br>
+            <br>
             <!-- Chocolate Invasion -->
-            <input type="number" pattern="/d*" id="mama" class="ci item"> Mama OG <br>
-            <input type="number" pattern="/d*" id="dt" class="ci item"> Double Trouble <br>
-            <input type="number" pattern="/d*" id="baby" class="ci item"> Baby OG <br>
-            <input type="number" pattern="/d*" id="cm" class="ci item"> Conflake Mashmallow <br>
-            <input type="number" pattern="/d*" id="tc" class="ci item"> Trible C <br>
-            <input type="number" pattern="/d*" id="sexy" class="ci item"> Sexy Back <br>
-            <input type="number" pattern="/d*" id="mp" class="ci item"> Matcha Powwow <br>
+            <h2 class="categories">Soft Cookies</h2>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" id="mama" class="ci item"> Mama OG <br>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" id="dt" class="ci item"> Double Trouble <br>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" id="baby" class="ci item"> Baby OG <br>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" id="cm" class="ci item"> Conflake Mashmallow <br>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" id="tc" class="ci item"> Trible C <br>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" id="sexy" class="ci item"> Sexy Back <br>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" id="mp" class="ci item"> Matcha Powwow <br>
+            <!-- Cookie Cake -->
+            <h2 class="categories">Cookie Cake</h2>
+            
         </div>
-        
+        <br>
         <button class="submit" onclick="getResult()">ตกลง</button>
+        <hr>
 
         <pre id="result">Order</pre>
+        <br>
         <button class="copy" onclick="copyToClipboard('result')">คัดลอก</button>
     </div>
     
@@ -155,7 +164,7 @@ function getResult() {
     const items = document.querySelectorAll(".item");
     const showResult = document.querySelector("#result")
     let orders = [];
-    let result = 'Order\n';
+    let result = '';
     let total = 0;
 
     // Information
