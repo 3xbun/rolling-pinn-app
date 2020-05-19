@@ -45,10 +45,7 @@ Please let us know what you would like and provide the following delivery info k
     
     <h1 class="title">Information</h1>
     <div class="information">
-        Name: <input type="text" placeholder="Name" id="name">
-        Phone No.: <input type="text" placeholder="Phone no." id="phone">
-        Address: <textarea rows="4" placeholder="address" id="address"></textarea>
-        Date/Time: <input type="text" placeholder="date" id="date">
+        <textarea oninput="getResult()" rows="4" placeholder="Information" id="information"></textarea>
     </div>
 </section>
 
@@ -57,7 +54,7 @@ Please let us know what you would like and provide the following delivery info k
     <hr> <br>
     <p id="house">Biohouse, 55 Soi Sukhumvit 39, Khlong Tan Nuea, Watthana, Bangkok 10110</p>
     <button class="copy" onclick="copyToClipboard('house')">คัดลอก</button> <br> <br>
-    <input type="text" placeholder="delivery fee" id="delivery_fee">
+    <input type="text" onchange="getResult()" placeholder="delivery fee" id="delivery_fee">
 </section>
 
 <section id="step4">
@@ -181,19 +178,16 @@ function copyToClipboard(containerid) {
 
 function getResult() {
     const items = document.querySelectorAll(".item");
-    const showResult = document.querySelector("#result")
+    const showResult = document.querySelector("#result");
     let orders = [];
     let result = '';
     let total = 0;
 
     // Information
-    const name = document.querySelector("#name").value
-    const phone = document.querySelector("#phone").value
-    const address = document.querySelector("#address").value
-    const date = document.querySelector("#date").value
-    const delivery = document.querySelector("#delivery_fee").value
+    const information = document.querySelector("#information").value;
+    const delivery = document.querySelector("#delivery_fee").value;
 
-    result += `${name}\n${phone}\n${address}\n\n${date}\n\nDelivery fee ${delivery}\n\nOrder\n`
+    result += `${information}\n\nDelivery fee ${delivery}\n\nOrder\n`
 
     for (item of items) {
         if (item.value != "") {
