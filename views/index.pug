@@ -1,5 +1,107 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  section#step1
+    h1.title= "** Promotion **"
+    hr
+    ul.phase
+      each ph in promotion
+        li(id="pro-" + ph.id)= ph.ph
+        button.copy(onclick=`copyToClipboard('pro-${ph.id}')`) คัดลอก
+
+  section#step2
+    h1.title= "Step 1: Ask for information"
+    hr
+    pre#inf-eng.
+      Please let us know what you would like and provide the following delivery info ka.
+        1. Your name.
+        2. Your phone number.
+        3. Delivery place. (Please share your location on line or google map for accuracy)
+        4. Date/Time to receiving.
+    br
+    button.copy(onclick="copyToClipboard('inf-eng')")= "คัดลอก"
+    pre#inf-th.
+      ขอทราบ 
+        1. ชื่อ
+        2. ที่อยู่ 
+        3. เบอร์โทรศัพท์ 
+        4. วัน / เวลา รับของ ค่าคุณลูกค้า
+    br
+    button.copy(onclick="copyToClipboard('inf-th')")= "คัดลอก"
+    hr
+    h1.title Information
+    .information
+      textarea#information(oninput="getResult()" rows="4" placeholder="Information")
+
+  section#step3
+    h1.title Step3: Get Delivery fee from #[a.button(href="https://lalamove.app.link/bkk_delivernow_th?__hssc=85099782.1.1589832350591&__hstc=85099782.e833149cc57875bca57de25bdb687398.1589817436949.1589817436949.1589832350591.2&hsCtaTracking=86f81edc-a11c-4a26-87ef-8c0cbd6b6224%7C6e18cfc3-1e82-4484-8467-2ba5ce3cc431&fbclid=IwAR0C9QHpkEwKjS642CPHnKCOIgDNkdR2z12TAKqYYqGG0Pas4KHNcL5_pgs&h=AT025D1EAVXmVJGhBS02pfvGyY9bCUFuZ6qe7v8Imop5-RHDAzeBnfKxDrfFiFkke5Ao39QykiWKmFnclNwpGHewedayZL49_FpUkrnjvMinsUPtWKsLFVRJLggpjg" target="_blank") Lalamove]
+    hr
+    br 
+    p#house Biohouse, 55 Soi Sukhumvit 39, Khlong Tan Nuea, Watthana, Bangkok 10110
+    button.copy(onclick="copyToClipboard('house')")= "คัดลอก"
+    hr
+    input#delivery_fee(type="text" inputmode="numeric" pattern="[0-9]*" oninput="getResult()" placeholder="delivery fee") 
+    br
+
+  section#step4
+    h1.title Step4: Orders
+    hr
+    .order
+      .container
+        each item in items
+          if item.category == "Cakedashians"
+            br
+            h2.categories Cakedashians
+            for i in item.items
+              input(type="text" inputmode="numeric" pattern="[0-9]*" id=i.id class="cake item")
+              |  - #{i.name}
+              br
+          else if item.category == "Brownie Bites"
+            br
+            h2.categories Brownie Bites
+            for i in item.items
+              input(type="text" inputmode="numeric" pattern="[0-9]*" id=i.id class="bb item")
+              |  - #{i.name}
+              br
+          else if item.category == "The Big C's"
+            br
+            h2.categories The Big C's
+            for i in item.items
+              input(type="text" inputmode="numeric" pattern="[0-9]*" id=i.id class="bc item")
+              |  - #{i.name}
+              br
+          else if item.category == "Soft Cookies"
+            br
+            h2.categories Soft Cookies
+            for i in item.items
+              input(type="text" inputmode="numeric" pattern="[0-9]*" id=i.id class="sc item")
+              |  - #{i.name}
+              br
+          else if item.category == "Cookie Cake"
+            br
+            h2.categories Cookie Cake
+            for i in item.items
+              input(type="text" inputmode="numeric" pattern="[0-9]*" id=i.id class="cc item")
+              |  - #{i.name}
+              br
+          else
+            for i in item.items
+              input(type="text" inputmode="numeric" pattern="[0-9]*" id=i.id class="ind item")
+              |  - #{i.name}
+              br
+
+        br
+        button.submit(onclick="getResult()") ตกลง
+        hr
+
+        pre#result Order
+        br
+        button.copy(onclick="copyToClipboard('result')")= "คัดลอก"
+
+  section#step5
+    h1.title Step5: Thank you
+    hr
+    ul.phase
+      each ph in thankyou
+        li(id="ty-" + ph.id)= ph.ph
+        button.copy(onclick=`copyToClipboard('ty-${ph.id}')`) คัดลอก
