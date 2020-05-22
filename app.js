@@ -3,18 +3,9 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const mongoose = require('mongoose');
 
 const app = express();
 const port = 3000;
-
-// Connect to mongoDB with mongoose
-mongoose.connect('mongodb://localhost:27017/mongodb_test_db', () => {
-  console.log('MongoDB Connected');
-}).catch(err => {
-  console.log('Error: ', err.stack);
-  process.exit(1);
-});
 
 // File Systems
 const fs = require('file-system');
