@@ -1,13 +1,13 @@
 {
-  "name": "full-stack-dev",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "rolling-pinn-app",
+  "version": "2.0.0",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
   "keywords": [],
+  "description": "App build with express and pug engine",
   "author": "Bunnasorn Kaewsiri",
   "license": "MIT",
   "dependencies": {
