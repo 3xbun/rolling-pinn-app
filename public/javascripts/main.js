@@ -181,7 +181,7 @@ function getResult() {
     }
 
     // Grand Total
-    result += `Total ${Number(delivery) + calculator(ind, 'ind') + calculator(cake, 'cake') + calculator(bb, 'bb') + calculator(bc, 'bc') + calculator(sc, 'ci')}`
+    result += `Total ${Number(delivery) + calculator(ind, 'ind') + calculator(cake, 'cake') + calculator(bb, 'bb') + calculator(bc, 'bc') + calculator(sc, 'ci') + calculator(cs, 'cs') + calculator(wc, 'wc') + calculator(cc, 'cc')}`
 
     showResult.innerHTML = result;
 }
