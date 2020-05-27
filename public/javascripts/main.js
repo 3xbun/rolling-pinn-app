@@ -294,3 +294,20 @@ function calculator(orders, name) {
 
     return total
 }
+
+function dropDown() {
+    const drop = document.querySelector("#phase");
+    const status = document.querySelector("#dropdown");
+
+    if (status.innerHTML == "Show") {
+        drop.style.display = "block";
+        status.innerHTML = "Hide";
+        drop.classList.remove("animate__fadeOutUp");
+        drop.classList.add('animate__animated', 'animate__slideInDown');
+    } else {
+        drop.style.display = "none";
+        status.innerHTML = "Show";
+        drop.classList.remove("animate__slideInDown");
+    }
+    console.log(drop.style.display);
+}

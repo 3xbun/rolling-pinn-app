@@ -15,6 +15,7 @@ body {
 .container {
     margin: auto;
     width: 85vw;
+    max-width: 600px;
 }
 
 nav {
@@ -37,6 +38,11 @@ section {
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     padding: 1.5em;
     text-align: left;
+}
+
+#step1 div {
+    display: flex;
+    justify-content: space-between;
 }
 
 #step2 pre {
@@ -67,7 +73,10 @@ input, textarea {
     width: 100%;
 }
 
-#step3
+#phase {
+    display: none;
+    --animation-duration: 0.5s;
+}
 
 .phase li {
     margin-left: 1em;

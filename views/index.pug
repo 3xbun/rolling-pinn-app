@@ -2,12 +2,19 @@ extends layout
 
 block content
   section#step1
-    h1.title= "** Promotion **"
+    div
+      h1.title= "Phases"
+      button#dropdown(type="" onclick="dropDown()") Show
     hr
-    ul.phase
+    ul#phase.phase.animate__animated
       each ph in promotion
         li(id="pro-" + ph.id)= ph.ph
         button.copy(onclick=`copyToClipboard('pro-${ph.id}')`) คัดลอก
+
+      each ph in phases
+        h3(style="text-decoration: underline;")= ph.situation
+        li(id="ph-" + ph.id)= ph.ph
+        button.copy(onclick=`copyToClipboard('ph-${ph.id}')`) คัดลอก
 
   section#step2
     h1.title= "Step 1: Ask for information"
