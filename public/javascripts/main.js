@@ -145,11 +145,7 @@ function getResult() {
 
     // Cookie Cake
     if (cc.length > 0) {
-        amt = 0;
-        for (order of cc) {
-            amt += Number(order.value);
-        }
-        result += `${amt} Cookie Cake ${calculator(cc, 'cc')}\n${counter(cc, true)}\n`;
+        result += `${cc.length} Cookie Cake ${calculator(cc, 'cc')}\n${counter(cc, true)}\n`;
     }
 
     // Cake by the Slice
@@ -181,12 +177,7 @@ function getResult() {
 
     // Cake by the Slice
     if (wc.length > 0) {
-        amt = 0;
-        for (order of wc) {
-            amt += Number(order.value);
-        }
-
-        result += `${amt} Cookie Cake ${calculator(wc, 'cake')}\n${counter(wc, true)}\n`;
+        result += `${wc.length} Cookie Cake ${calculator(wc, 'cake')}\n${counter(wc, true)}\n`;
     }
 
     // Grand Total
@@ -289,6 +280,14 @@ function calculator(orders, name) {
             } else {
                 total = "error"
                 break;
+            }
+        } 
+    } else if (name == 'cc') {
+        for (order of orders) {
+            if (order.value == "1") {
+                total += 700
+            } else if (order.value == "2") {
+                total += 1000
             }
         }
     }
