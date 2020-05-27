@@ -84,6 +84,20 @@ block content
               input(type="text" inputmode="numeric" pattern="[0-9]*" id=i.id class="cc item")
               |  - #{i.name}
               br
+          else if item.category == "Cake by the Slice"
+            br
+            h2.categories Cake by the Slice
+            for i in item.items
+              input(type="text" inputmode="numeric" pattern="[0-9]*" id=i.id class="cs item")
+              |  - #{i.name}
+              br
+          else if item.category == "Whole Cake"
+            br
+            h2.categories Whole Cake
+            for i in item.items
+              input(type="text" inputmode="numeric" pattern="[0-9]*" id=i.id class="wc item")
+              |  - #{i.name}
+              br
           else
             for i in item.items
               input(type="text" inputmode="numeric" pattern="[0-9]*" id=i.id class="ind item")
@@ -91,7 +105,7 @@ block content
               br
 
         br
-        button.submit(onclick="getResult()") ตกลง
+        button.submit(onclick="getResult(items)") ตกลง
         hr
 
         pre#result Order

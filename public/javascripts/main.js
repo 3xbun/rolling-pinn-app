@@ -1,28 +1,9 @@
-console.log("external Work");
+const listItems = {}
 
-const listItems = {
-    "dcc": "Death by Chocolate Pudding Cake",
-    "cp": "Chocolate Pudding",
-    "bc": "Basque Cheesecake",
-    "cc": "Carrot Cream Cheese",
-    "bn": "Banana Nutella",
-    "bae": "Bae",
-    "rv": "Red Velvet",
-    "fud": "Fudge",
-    "hn": "Hella Nutella",
-    "cup": "Cup C",
-    "dc": "Death by Chocolate XL",
-    "rvc": "Red Velvet Cream Cheese",
-    "oro": "Oreo",
-    "mama": "Mama OG",
-    "dt": "Double Trouble",
-    "baby": "Baby OG",
-    "cm": "Conflake Mashmallow",
-    "tc": "Trible C",
-    "sexy": "Sexy Back",
-    "mp": "Matcha Powwow",
-    "dccc": "Death by Chocolate",
-    "cupcc": "Cup C"
+for (item in items) {
+    for (i of items[item].items) {
+        listItems[i.id] = i.name;
+    }
 }
 
 function copyToClipboard(containerid) {
@@ -74,6 +55,8 @@ function getResult() {
     let bc = [];
     let sc = [];
     let cc = [];
+    let cs = [];
+    let wc = [];
 
     for (order of orders) {
         if (order.classList[0] == "ind") {
@@ -89,6 +72,10 @@ function getResult() {
             sc.push(order);
         } else if (order.classList[0] == 'cc') {
             cc.push(order);
+        } else if (order.classList[0] == 'cs') {
+            cs.push(order);
+        } else if (order.classList[0] == 'wc') {
+            wc.push(order);
         }
     }
 
@@ -163,6 +150,43 @@ function getResult() {
             amt += Number(order.value);
         }
         result += `${amt} Cookie Cake ${calculator(cc, 'cc')}\n${counter(cc, true)}\n`;
+    }
+
+    // Cake by the Slice
+    if (cs.length > 0) {
+        amt = 0
+        let box = 0;
+
+        for (order of cs) {
+            amt += Number(order.value);
+        }
+
+        while (amt > 0) {
+            if (amt >= 8) {
+                amt -= 8;
+                box += 1;
+            } else if (amt >= 6) {
+                amt -= 6;
+                box += 1;
+            } else if (amt >= 3) {
+                amt -= 3;
+                box += 1;
+            } else {
+                break;
+            }
+        }
+
+        result += `${box} box(es) of Cake by the Slice ${calculator(cs, 'cs')}\n${counter(cs)}\n`;
+    }
+
+    // Cake by the Slice
+    if (wc.length > 0) {
+        amt = 0;
+        for (order of wc) {
+            amt += Number(order.value);
+        }
+
+        result += `${amt} Cookie Cake ${calculator(wc, 'cake')}\n${counter(wc, true)}\n`;
     }
 
     // Grand Total
@@ -246,12 +270,25 @@ function calculator(orders, name) {
                 break;
             }
         }
-    } else if (name == 'cc') {
+    } else if (name == 'cs') {
+        lgt = 0;
         for (order of orders) {
-            if (order.value == "1") {
-                total += 700;
-            } else if (order.value == "2") {
-                total += 1000;
+            lgt += Number(order.value);
+        }
+        
+        while (lgt > 0) {
+            if (lgt >= 8) {
+                lgt -= 8;
+                total += 1600;
+            } else if (lgt >= 6) {
+                lgt -= 6;
+                total += 1200;
+            } else if (lgt >= 3) {
+                lgt -= 3;
+                total += 660;    
+            } else {
+                total = "error"
+                break;
             }
         }
     }
