@@ -172,7 +172,7 @@ function getResult() {
             }
         }
 
-        result += `${box} box(es) of Cake by the Slice ${calculator(cs, 'cs')}\n${counter(cs)}\n`;
+        result += `${cs.length} piece(s) of Cake by the Slice ${calculator(cs, 'cs')}\n${counter(cs)}\n`;
     }
 
     // Cake by the Slice
@@ -208,7 +208,7 @@ function calculator(orders, name) {
 
     if (name == 'ind') {
         for (order of orders) {
-            total += 750 * Number(document.querySelector("#dcc").value);
+            total += 850 * Number(document.querySelector("#dcc").value);
         }
     } else if (name == 'cake') {
         for (order of orders) {
@@ -278,8 +278,8 @@ function calculator(orders, name) {
                 lgt -= 3;
                 total += 660;    
             } else {
-                total = "error"
-                break;
+                lgt -= 1;
+                total += 220;
             }
         } 
     } else if (name == 'cc') {
